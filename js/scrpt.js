@@ -9,30 +9,43 @@
 let pcDiv = document.querySelector(`#myNumber`);
 
 // Creo l'array dei miei numeri random
-const pcNumber = [];
+const pcNumbers = [];
 
 // Creo un ciclo per pusciare 5 numeri nell'array
 for (let i = 0; i < 5; i++) {
     let randomNumber = getRandomNumber(1, 100);
-    if (!pcNumber.includes(randomNumber)) {
-        pcNumber.push(randomNumber);
+    if (!pcNumbers.includes(randomNumber)) {
+        pcNumbers.push(randomNumber);
     }
 }
 
 //  Mostro i numeri sul mio html
-pcDiv.innerHTML = `${pcNumber}`;
+pcDiv.innerHTML = `${pcNumbers}`;
 
 // Dopo 30 secondi i numeri scompaiono 
 setTimeout(() => {
     pcDiv.innerHTML = ``;
+    // l'utente deve inserire, uno alla volta, 
+    // i numeri che ha visto precedentemente, tramite il prompt().
+    let userNumbers = [];
+    for (let i = 0; i < 5; i++) {
+        let userNumber = parseInt(prompt("Inserisci i numeri che hai visto"));
+        userNumbers.push(userNumber);
+    }
+    // Dice quanti e quali dei numeri da indovinare sono stati individuati
+    showResult(pcNumbers, userNumbers);
 }, 30000)
 
-// l'utente deve inserire, uno alla volta, 
-// i numeri che ha visto precedentemente, tramite il prompt().
-let userNumbers = [];
-
-let userNumber = parseInt(prompt("Inserisci i numeri che hai visto"));
-userNumbers.push(userNumber);
+// Creo una funziona per controllare quanti e quali dei numeri da indovinare sono stati scritti
+function showResult(pcNumb, userNumb) {
+    let correctNumbers = [];
+    for (let i = 0; i < userNumb.length; i++) {
+        if (pcNumb.includes(userNumb[i])) {
+            correctNumbers.push(userNumb[i]);
+        }
+    }
+    pcDiv.innerHTML = `Hai indovinato ${correctNumbers}.`;
+}
 
 // Creo una funziona per generare 5 numeri
 function getRandomNumber(min, max) {
