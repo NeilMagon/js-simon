@@ -46,7 +46,7 @@ function showResult(pcNumb, userNumb) {
             correctNumbers.push(userNumb[i]);
         }
     }
-    pcDiv.innerHTML = `Hai indovinato ${correctNumbers}.`;
+    pcDiv.innerHTML = `Hai indovinato ${correctNumbers.length}.`;
 }
 
 // Creo una funziona per generare 5 numeri
