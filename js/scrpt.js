@@ -30,11 +30,13 @@ setTimeout(() => {
     let userNumbers = [];
     for (let i = 0; i < 5; i++) {
         let userNumber = parseInt(prompt("Inserisci i numeri che hai visto"));
-        userNumbers.push(userNumber);
+        if (!userNumbers.includes(userNumber)) {
+            userNumbers.push(userNumber);
+        }
     }
     // Dice quanti e quali dei numeri da indovinare sono stati individuati
     showResult(pcNumbers, userNumbers);
-}, 30000)
+}, 3000)
 
 // Creo una funziona per controllare quanti e quali dei numeri da indovinare sono stati scritti
 function showResult(pcNumb, userNumb) {
