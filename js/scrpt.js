@@ -25,6 +25,9 @@ pcDiv.innerHTML = `${pcNumbers}`;
 // Dopo 30 secondi i numeri scompaiono 
 setTimeout(() => {
     pcDiv.innerHTML = ``;
+}, 2900);
+
+setTimeout(() => {
     // l'utente deve inserire, uno alla volta, 
     // i numeri che ha visto precedentemente, tramite il prompt().
     let userNumbers = [];
